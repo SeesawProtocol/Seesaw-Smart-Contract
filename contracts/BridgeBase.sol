@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.11;
 import "@openzeppelin/contracts-upgradeable/utils/math/SafeMathUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "./Token.sol";
@@ -18,6 +18,7 @@ contract BridgeBase is Initializable {
     function setFee(uint8 _fee, address _feeWallet) public{
         require(msg.sender == admin, "only admin");
         require(_fee>=0 && _fee<1000, "0<=,<1000");
+        require(_feeWallet != address(0), "_feeWallet can not be 0 address");
         fee=_fee;
         feeWallet=_feeWallet;
     }
@@ -32,6 +33,9 @@ contract BridgeBase is Initializable {
     );
 
     function initialize(address _admin, address _token) public initializer {
+        require(_admin != address(0), "_admin can not be 0 address");
+        require(_token != address(0), "_token can not be 0 address");
+
         admin = _admin;
         token = Token(_token);
     }
@@ -53,9 +57,11 @@ contract BridgeBase is Initializable {
 
     function mint(address _to, uint256 _amount, uint256 _nonce) public {
         require(msg.sender == admin, "only admin");
-        require(processedNonces[msg.sender][_nonce] == false, "already mint");
+        require(_to != address(0), "_to can not be 0 address");
+
+        require(!processedNonces[msg.sender][_nonce], "already mint");
         processedNonces[msg.sender][_nonce]=true;
-        token.mint(_to, _amount.mul(100-fee).div(1000));
+        token.mint(_to, _amount.mul(1000-fee).div(1000));
         if(fee>0)
             token.mint(feeWallet, _amount.mul(fee).div(2000));
     }
