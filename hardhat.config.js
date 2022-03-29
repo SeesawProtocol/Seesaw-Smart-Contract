@@ -25,5 +25,5 @@ module.exports = {
       accounts: ["07609aac21400451b4f22ad06686bd388b46f22372cd7b1162e684b762d1628a"]
     }
   },
-  solidity: "0.8.4",
+  solidity: "0.8.11",
 };

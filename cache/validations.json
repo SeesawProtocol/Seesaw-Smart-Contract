@@ -1,0 +1,899 @@
+{
+  "version": "3.2",
+  "log": [
+    {
+      "AccessControlUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:50",
+        "inherit": [
+          "ERC165Upgradeable",
+          "IERC165Upgradeable",
+          "IAccessControlUpgradeable",
+          "ContextUpgradeable",
+          "Initializable"
+        ],
+        "libraries": [
+          "StringsUpgradeable"
+        ],
+        "methods": [
+          "supportsInterface(bytes4)",
+          "hasRole(bytes32,address)",
+          "getRoleAdmin(bytes32)",
+          "grantRole(bytes32,address)",
+          "revokeRole(bytes32,address)",
+          "renounceRole(bytes32,address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "contract": "AccessControlUpgradeable",
+              "label": "_roles",
+              "type": "t_mapping(t_bytes32,t_struct(RoleData)43_storage)",
+              "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:64"
+            },
+            {
+              "contract": "AccessControlUpgradeable",
+              "label": "__gap",
+              "type": "t_array(t_uint256)49_storage",
+              "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:232"
+            }
+          ],
+          "types": {
+            "t_mapping(t_bytes32,t_struct(RoleData)43_storage)": {
+              "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)"
+            },
+            "t_bytes32": {
+              "label": "bytes32"
+            },
+            "t_struct(RoleData)43_storage": {
+              "label": "struct AccessControlUpgradeable.RoleData",
+              "members": [
+                {
+                  "label": "members",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "label": "adminRole",
+                  "type": "t_bytes32"
+                }
+              ]
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_bool": {
+              "label": "bool"
+            },
+            "t_array(t_uint256)49_storage": {
+              "label": "uint256[49]"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "IAccessControlUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\access\\IAccessControlUpgradeable.sol:9",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "hasRole(bytes32,address)",
+          "getRoleAdmin(bytes32)",
+          "grantRole(bytes32,address)",
+          "revokeRole(bytes32,address)",
+          "renounceRole(bytes32,address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:35",
+        "inherit": [],
+        "libraries": [
+          "AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_bool",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:39"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:44"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC20Upgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\token\\ERC20\\IERC20Upgradeable.sol:9",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "e282a09c0933f05a32775cebd5584220beac1906baedf408777150658ec31a01",
+          "withoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff",
+          "linkedWithoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "ContextUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:17",
+        "inherit": [
+          "Initializable"
+        ],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "contract": "ContextUpgradeable",
+              "label": "__gap",
+              "type": "t_array(t_uint256)50_storage",
+              "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:31"
+            }
+          ],
+          "types": {
+            "t_array(t_uint256)50_storage": {
+              "label": "uint256[50]"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "StringsUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\StringsUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "4d34c14b667b32408423c13023f5eb764545872ad1170baea91de6837a1abc4b",
+          "withoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff",
+          "linkedWithoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "ERC165Upgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:23",
+        "inherit": [
+          "IERC165Upgradeable",
+          "Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "supportsInterface(bytes4)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "contract": "ERC165Upgradeable",
+              "label": "__gap",
+              "type": "t_array(t_uint256)50_storage",
+              "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:36"
+            }
+          ],
+          "types": {
+            "t_array(t_uint256)50_storage": {
+              "label": "uint256[50]"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC165Upgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\IERC165Upgradeable.sol:15",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "supportsInterface(bytes4)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeMathUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\math\\SafeMathUpgradeable.sol:16",
+        "version": {
+          "withMetadata": "535286823f99c86bdd182397299c10c4efc27a7db9a463755474750f167a8f99",
+          "withoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff",
+          "linkedWithoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC20": {
+        "src": "@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol:9",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "BridgeBase": {
+        "src": "contracts\\BridgeBase.sol:8",
+        "version": {
+          "withMetadata": "3f249b637bf406da1fb96507c6b1f6eff4c28b3a46d45df5ec93ab97d9cd2529",
+          "withoutMetadata": "52df0972bf5ea1389544c0d2fbed0421daee8928640ddc51aaf59baff6d29ffd",
+          "linkedWithoutMetadata": "52df0972bf5ea1389544c0d2fbed0421daee8928640ddc51aaf59baff6d29ffd"
+        },
+        "inherit": [
+          "Initializable"
+        ],
+        "libraries": [
+          "SafeMathUpgradeable"
+        ],
+        "methods": [
+          "setFee(uint8,address)",
+          "initialize(address,address)",
+          "deposit(uint8,address,uint256)",
+          "withdraw(address,uint256,uint256)",
+          "getBalance(address)",
+          "getServerBalance()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "contract": "BridgeBase",
+              "label": "admin",
+              "type": "t_address",
+              "src": "contracts\\BridgeBase.sol:10"
+            },
+            {
+              "contract": "BridgeBase",
+              "label": "feeWallet",
+              "type": "t_address",
+              "src": "contracts\\BridgeBase.sol:11"
+            },
+            {
+              "contract": "BridgeBase",
+              "label": "token",
+              "type": "t_contract(Token)5435",
+              "src": "contracts\\BridgeBase.sol:12"
+            },
+            {
+              "contract": "BridgeBase",
+              "label": "nonce",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\BridgeBase.sol:13"
+            },
+            {
+              "contract": "BridgeBase",
+              "label": "processedNonces",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_bool))",
+              "src": "contracts\\BridgeBase.sol:14"
+            },
+            {
+              "contract": "BridgeBase",
+              "label": "fee",
+              "type": "t_uint8",
+              "src": "contracts\\BridgeBase.sol:15"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_contract(Token)5435": {
+              "label": "contract Token"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_bool))": {
+              "label": "mapping(address => mapping(uint256 => bool))"
+            },
+            "t_mapping(t_uint256,t_bool)": {
+              "label": "mapping(uint256 => bool)"
+            },
+            "t_bool": {
+              "label": "bool"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeFactory": {
+        "src": "contracts\\IPancakeFactory.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "feeTo()",
+          "feeToSetter()",
+          "getPair(address,address)",
+          "allPairs(uint256)",
+          "allPairsLength()",
+          "createPair(address,address)",
+          "setFeeTo(address)",
+          "setFeeToSetter(address)",
+          "INIT_CODE_PAIR_HASH()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakePair": {
+        "src": "contracts\\IPancakePair.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "DOMAIN_SEPARATOR()",
+          "PERMIT_TYPEHASH()",
+          "nonces(address)",
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)",
+          "MINIMUM_LIQUIDITY()",
+          "factory()",
+          "token0()",
+          "token1()",
+          "getReserves()",
+          "price0CumulativeLast()",
+          "price1CumulativeLast()",
+          "kLast()",
+          "mint(address)",
+          "burn(address)",
+          "swap(uint256,uint256,address,bytes)",
+          "skim(address)",
+          "sync()",
+          "initialize(address,address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeRouter01": {
+        "src": "contracts\\IPancakeRouter01.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "factory()",
+          "WETH()",
+          "addLiquidity(address,address,uint256,uint256,uint256,uint256,address,uint256)",
+          "addLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidity(address,address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityWithPermit(address,address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "removeLiquidityETHWithPermit(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",
+          "swapTokensForExactTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokens(uint256,address[],address,uint256)",
+          "swapTokensForExactETH(uint256,uint256,address[],address,uint256)",
+          "swapExactTokensForETH(uint256,uint256,address[],address,uint256)",
+          "swapETHForExactTokens(uint256,address[],address,uint256)",
+          "quote(uint256,uint256,uint256)",
+          "getAmountOut(uint256,uint256,uint256)",
+          "getAmountIn(uint256,uint256,uint256)",
+          "getAmountsOut(uint256,address[])",
+          "getAmountsIn(uint256,address[])"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeRouter02": {
+        "src": "contracts\\IPancakeRouter02.sol:5",
+        "inherit": [
+          "IPancakeRouter01"
+        ],
+        "libraries": [],
+        "methods": [
+          "removeLiquidityETHSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokensSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokensSupportingFeeOnTransferTokens(uint256,address[],address,uint256)",
+          "swapExactTokensForETHSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Token": {
+        "src": "contracts\\Token.sol:14",
+        "version": {
+          "withMetadata": "82c89099b273d63096f53b1d2115547a058ff64f0fb474f896452abd7de422f2",
+          "withoutMetadata": "a2facae92d00e8d22e3ebc70876b6e286c08d4ecc246c1d500620e1ab9d47209",
+          "linkedWithoutMetadata": "a2facae92d00e8d22e3ebc70876b6e286c08d4ecc246c1d500620e1ab9d47209"
+        },
+        "inherit": [
+          "AccessControlUpgradeable",
+          "ERC165Upgradeable",
+          "IERC165Upgradeable",
+          "IAccessControlUpgradeable",
+          "ContextUpgradeable",
+          "IERC20Upgradeable",
+          "Initializable"
+        ],
+        "libraries": [
+          "SafeMathUpgradeable"
+        ],
+        "methods": [
+          "initialize(string,string,uint8,address,bool[6],uint256[13])",
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "increaseAllowance(address,uint256)",
+          "decreaseAllowance(address,uint256)",
+          "isExcludedFromReward(address)",
+          "totalFees()",
+          "enableTrading()",
+          "minimumTokensBeforeSwapAmount()",
+          "setAutomatedMarketMakerPair(address,bool)",
+          "setProtectionSettings(bool)",
+          "setGasPriceLimit(uint256)",
+          "disableTransferDelay()",
+          "reflectionFromToken(uint256,bool)",
+          "airdropToWallets(address[],uint256[])",
+          "removeLimits()",
+          "tokenFromReflection(uint256)",
+          "excludeFromReward(address)",
+          "excludeFromMaxTransaction(address,bool)",
+          "includeInReward(address)",
+          "addBots(address[])",
+          "removeBots(address[])",
+          "isExcludedFromFee(address)",
+          "excludeFromFee(address)",
+          "includeInFee(address)",
+          "setBuyFee(uint256,uint256,uint256)",
+          "setSellFee(uint256,uint256,uint256)",
+          "setMarketingAddress(address)",
+          "setLiquidityAddress(address)",
+          "setSwapAndLiquifyEnabled(bool)",
+          "buyBackTokens(uint256)",
+          "()",
+          "transferForeignToken(address,address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Token",
+              "label": "admin",
+              "type": "t_address",
+              "src": "contracts\\Token.sol:16"
+            },
+            {
+              "contract": "Token",
+              "label": "marketingAddress",
+              "type": "t_address_payable",
+              "src": "contracts\\Token.sol:17"
+            },
+            {
+              "contract": "Token",
+              "label": "bots",
+              "type": "t_mapping(t_address,t_bool)",
+              "src": "contracts\\Token.sol:18"
+            },
+            {
+              "contract": "Token",
+              "label": "liquidityAddress",
+              "type": "t_address_payable",
+              "src": "contracts\\Token.sol:20"
+            },
+            {
+              "contract": "Token",
+              "label": "_rOwned",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\Token.sol:23"
+            },
+            {
+              "contract": "Token",
+              "label": "_tOwned",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\Token.sol:24"
+            },
+            {
+              "contract": "Token",
+              "label": "_allowances",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "contracts\\Token.sol:25"
+            },
+            {
+              "contract": "Token",
+              "label": "_isExcludedFromFee",
+              "type": "t_mapping(t_address,t_bool)",
+              "src": "contracts\\Token.sol:27"
+            },
+            {
+              "contract": "Token",
+              "label": "_isExcluded",
+              "type": "t_mapping(t_address,t_bool)",
+              "src": "contracts\\Token.sol:29"
+            },
+            {
+              "contract": "Token",
+              "label": "_excluded",
+              "type": "t_array(t_address)dyn_storage",
+              "src": "contracts\\Token.sol:30"
+            },
+            {
+              "contract": "Token",
+              "label": "_tTotal",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:33"
+            },
+            {
+              "contract": "Token",
+              "label": "_rTotal",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:34"
+            },
+            {
+              "contract": "Token",
+              "label": "_tFeeTotal",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:35"
+            },
+            {
+              "contract": "Token",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "contracts\\Token.sol:37"
+            },
+            {
+              "contract": "Token",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "contracts\\Token.sol:38"
+            },
+            {
+              "contract": "Token",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "contracts\\Token.sol:39"
+            },
+            {
+              "contract": "Token",
+              "label": "buyOrSellSwitch",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:44"
+            },
+            {
+              "contract": "Token",
+              "label": "_taxFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:47"
+            },
+            {
+              "contract": "Token",
+              "label": "_previousTaxFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:48"
+            },
+            {
+              "contract": "Token",
+              "label": "_liquidityFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:50"
+            },
+            {
+              "contract": "Token",
+              "label": "_previousLiquidityFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:51"
+            },
+            {
+              "contract": "Token",
+              "label": "_buyTaxFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:53"
+            },
+            {
+              "contract": "Token",
+              "label": "_buyLiquidityFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:54"
+            },
+            {
+              "contract": "Token",
+              "label": "_buyMarketingFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:55"
+            },
+            {
+              "contract": "Token",
+              "label": "_sellTaxFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:57"
+            },
+            {
+              "contract": "Token",
+              "label": "_sellLiquidityFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:58"
+            },
+            {
+              "contract": "Token",
+              "label": "_sellMarketingFee",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:59"
+            },
+            {
+              "contract": "Token",
+              "label": "liquidityActiveBlock",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:61"
+            },
+            {
+              "contract": "Token",
+              "label": "tradingActiveBlock",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:62"
+            },
+            {
+              "contract": "Token",
+              "label": "limitsInEffect",
+              "type": "t_bool",
+              "src": "contracts\\Token.sol:64"
+            },
+            {
+              "contract": "Token",
+              "label": "tradingActive",
+              "type": "t_bool",
+              "src": "contracts\\Token.sol:65"
+            },
+            {
+              "contract": "Token",
+              "label": "swapEnabled",
+              "type": "t_bool",
+              "src": "contracts\\Token.sol:66"
+            },
+            {
+              "contract": "Token",
+              "label": "_isExcludedMaxTransactionAmount",
+              "type": "t_mapping(t_address,t_bool)",
+              "src": "contracts\\Token.sol:68"
+            },
+            {
+              "contract": "Token",
+              "label": "_holderLastTransferTimestamp",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\Token.sol:71"
+            },
+            {
+              "contract": "Token",
+              "label": "transferDelayEnabled",
+              "type": "t_bool",
+              "src": "contracts\\Token.sol:72"
+            },
+            {
+              "contract": "Token",
+              "label": "_liquidityTokensToSwap",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:74"
+            },
+            {
+              "contract": "Token",
+              "label": "_marketingTokensToSwap",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:75"
+            },
+            {
+              "contract": "Token",
+              "label": "gasLimitActive",
+              "type": "t_bool",
+              "src": "contracts\\Token.sol:77"
+            },
+            {
+              "contract": "Token",
+              "label": "gasPriceLimit",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:78"
+            },
+            {
+              "contract": "Token",
+              "label": "automatedMarketMakerPairs",
+              "type": "t_mapping(t_address,t_bool)",
+              "src": "contracts\\Token.sol:82"
+            },
+            {
+              "contract": "Token",
+              "label": "minimumTokensBeforeSwap",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:84"
+            },
+            {
+              "contract": "Token",
+              "label": "maxTransactionAmount",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:85"
+            },
+            {
+              "contract": "Token",
+              "label": "maxWallet",
+              "type": "t_uint256",
+              "src": "contracts\\Token.sol:86"
+            },
+            {
+              "contract": "Token",
+              "label": "pancakeRouter",
+              "type": "t_contract(IPancakeRouter02)2515",
+              "src": "contracts\\Token.sol:88"
+            },
+            {
+              "contract": "Token",
+              "label": "pancakePair",
+              "type": "t_address",
+              "src": "contracts\\Token.sol:89"
+            },
+            {
+              "contract": "Token",
+              "label": "inSwapAndLiquify",
+              "type": "t_bool",
+              "src": "contracts\\Token.sol:91"
+            },
+            {
+              "contract": "Token",
+              "label": "swapAndLiquifyEnabled",
+              "type": "t_bool",
+              "src": "contracts\\Token.sol:92"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_address_payable": {
+              "label": "address payable"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)"
+            },
+            "t_bool": {
+              "label": "bool"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]"
+            },
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            },
+            "t_contract(IPancakeRouter02)2515": {
+              "label": "contract IPancakeRouter02"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    }
+  ]
+}
