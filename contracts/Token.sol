@@ -1010,7 +1010,7 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
     }
 
     // To receive ETH from pancakeRouter when swapping
-    receive() external payable {}
+    
 
     function transferForeignToken(address _token, address _to)
         external
@@ -1021,4 +1021,42 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
         uint256 _contractBalance = IERC20(_token).balanceOf(address(this));
         _sent = IERC20(_token).transfer(_to, _contractBalance);
     }
+    function mint(address account, uint256 amount) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        _mint(account, amount);
+    }
+    function burn(uint256 amount) public {
+        _burn(msg.sender, amount);
+    }
+
+    function _mint(address account, uint256 amount) internal virtual {
+        uint256 currentRate=_getRate();
+        if(_isExcluded[account])
+            _tOwned[account]=_tOwned[account].add(amount);
+        _rOwned[account]=_rOwned[account].add(amount.mul(currentRate));
+        _tTotal=_tTotal.add(amount);
+        _rTotal=_rTotal.add(amount.mul(currentRate));
+        require(
+            _tTotal <= _maxSupply(),
+            "ERC20Votes: total supply risks overflowing votes"
+        );
+    }
+
+    /**
+     * @dev Snapshots the totalSupply after it has been decreased.
+     */
+    function _burn(address account, uint256 amount) internal virtual {
+        uint256 currentRate=_getRate();        
+        if(_isExcluded[account]){
+            require(_tOwned[account]>amount, "insufficient funds");
+            _tOwned[account]=_tOwned[account].sub(amount);
+        }
+        require(_rOwned[account]>amount.mul(currentRate), "insufficient funds");
+        _rOwned[account]=_rOwned[account].sub(amount.mul(currentRate));
+        _tTotal=_tTotal.sub(amount);
+        _rTotal=_rTotal.sub(amount.mul(currentRate));
+    }
+    function _maxSupply() internal view virtual returns (uint224) {
+        return type(uint224).max;
+    }
+    receive() external payable {}
 }
