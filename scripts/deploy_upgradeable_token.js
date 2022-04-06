@@ -12,7 +12,6 @@ async function main () {
       [
         true, // limitsInEffect
         false, // tradingActive
-        false, //swapEnabled
         true, // transferDelayEnabled
         true, //gasLimitActive
         false // swapAndLiquifyEnabled
@@ -28,8 +27,6 @@ async function main () {
         5, // _sellTaxFee
         3, // _sellLiquidityFee
         2, // _sellMarketingFee
-        0, // liquidityActiveBlock: 0 means liquidity is not active yet
-        0, // tradingActiveBlock : 0 means trading is not active
         "1000000000000000000000000", // gasPriceLimit
       ]        
     ], { initializer: 'initialize' });

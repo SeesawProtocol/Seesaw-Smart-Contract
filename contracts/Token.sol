@@ -18,7 +18,6 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
     mapping(address => bool) public bots;
 
     address payable public liquidityAddress; // Liquidity Address
-    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     mapping(address => uint256) private _rOwned;
     mapping(address => uint256) private _tOwned;
@@ -58,12 +57,9 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
     uint256 public _sellLiquidityFee;
     uint256 public _sellMarketingFee;
 
-    uint256 public liquidityActiveBlock; // 0 means liquidity is not active yet
-    uint256 public tradingActiveBlock; // 0 means trading is not active
 
     bool public limitsInEffect;
     bool public tradingActive;
-    bool public swapEnabled;
 
     mapping(address => bool) public _isExcludedMaxTransactionAmount;
 
@@ -120,8 +116,8 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
         string memory __symbol,
         uint8 __decimals,
         address _pancakeV2RouterAddress,
-        bool[6] memory _bool_params,
-        uint256[13] memory _uint_params
+        bool[5] memory _bool_params,
+        uint256[11] memory _uint_params
     ) public initializer {
         _name = __name;
         _symbol = __symbol;
@@ -144,17 +140,14 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
         _sellLiquidityFee = _uint_params[8];
         _sellMarketingFee = _uint_params[9];
 
-        liquidityActiveBlock = _uint_params[10]; // 0 means liquidity is not active yet
-        tradingActiveBlock = _uint_params[11]; // 0 means trading is not active
 
         limitsInEffect = _bool_params[0];
         tradingActive = _bool_params[1];
-        swapEnabled = _bool_params[2];
-        transferDelayEnabled = _bool_params[3];
+        transferDelayEnabled = _bool_params[2];
 
-        gasLimitActive = _bool_params[4];
-        gasPriceLimit = _uint_params[12];
-        swapAndLiquifyEnabled = _bool_params[5];
+        gasLimitActive = _bool_params[3];
+        gasPriceLimit = _uint_params[10];
+        swapAndLiquifyEnabled = _bool_params[4];
 
         IPancakeRouter02 _pancakeRouter = IPancakeRouter02(
             _pancakeV2RouterAddress
@@ -293,7 +286,6 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
     function enableTrading() external onlyRole(DEFAULT_ADMIN_ROLE) {
         tradingActive = true;
         swapAndLiquifyEnabled = true;
-        tradingActiveBlock = block.number;
     }
 
     function minimumTokensBeforeSwapAmount() external view returns (uint256) {
@@ -1021,13 +1013,26 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
         uint256 _contractBalance = IERC20(_token).balanceOf(address(this));
         _sent = IERC20(_token).transfer(_to, _contractBalance);
     }
-    function mint(address account, uint256 amount) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    function mint(address account, uint256 amount) public onlyRole(DEFAULT_ADMIN_ROLE) returns (bool){
         _mint(account, amount);
+        return true;
     }
-    function burn(uint256 amount) public {
+    function burn(uint256 amount) public returns (bool){
         _burn(msg.sender, amount);
+        return true;
     }
-
+    function burnFrom(address account, uint256 amount) public returns (bool){
+        _approve(
+            account,
+            _msgSender(),
+            _allowances[account][_msgSender()].sub(
+                amount,
+                "ERC20: transfer amount exceeds allowance"
+            )
+        );
+        _burn(account, amount);
+        return true;
+    }
     function _mint(address account, uint256 amount) internal virtual {
         uint256 currentRate=_getRate();
         if(_isExcluded[account])
@@ -1035,10 +1040,6 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
         _rOwned[account]=_rOwned[account].add(amount.mul(currentRate));
         _tTotal=_tTotal.add(amount);
         _rTotal=_rTotal.add(amount.mul(currentRate));
-        require(
-            _tTotal <= _maxSupply(),
-            "ERC20Votes: total supply risks overflowing votes"
-        );
     }
 
     /**
@@ -1054,9 +1055,6 @@ contract Token is Initializable, IERC20Upgradeable, AccessControlUpgradeable {
         _rOwned[account]=_rOwned[account].sub(amount.mul(currentRate));
         _tTotal=_tTotal.sub(amount);
         _rTotal=_rTotal.sub(amount.mul(currentRate));
-    }
-    function _maxSupply() internal view virtual returns (uint224) {
-        return type(uint224).max;
     }
     receive() external payable {}
 }
